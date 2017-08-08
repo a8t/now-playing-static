@@ -110,6 +110,7 @@ figure {
   display: block;
 }
 
+
 /*
   Hide the poster on mobile devices, only show backdrop
   TIP: Use media queries to reveal it on larger devices
@@ -194,4 +195,117 @@ figure {
 
 .about > p {
   margin: 0;
+}
+
+/*small screen*/
+@media (min-width:768px) {
+
+  /* defining a grid for the sidebar, content, footer */
+  body{
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    grid-template-rows: 1fr 100px;
+    padding-bottom: 0px;
+  }
+
+  /* positioning logo */
+  .site-logo {
+    position: fixed;
+    width: 70px;
+    top:0;
+    left:0;
+    z-index: 1000;
+  }
+  /* positioning nav and buttons */
+  .site-nav {
+    position: fixed;
+    width: 70px;
+    top:60px;
+    left:0;
+  }
+
+  .site-nav-item {
+    float: none;
+    text-align: center;
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  /*positioning main content*/
+  main {
+    grid-column: 2/4;
+    grid-row: 1;
+  }
+
+  /* show movie descriptions */
+  .movie-overview {
+    display: block;
+  }
+
+  /*positioning footer*/
+  .site-footer{
+    display: grid;
+    grid-column: 2;
+  }
+  .footer-nav {
+    display: flex;
+    align-content: center;
+    align-self: center;
+    grid-column: 2/3;
+  }
+  .about {
+    grid-column: 3/4;
+  }
+}
+
+
+/* second breakpoint, switching backdrops for posters and hiding descriptions except first movie */
+@media (min-width:992px) {
+  .movie-poster{
+    display: block;
+  }
+
+  .movie-backdrop,
+  .movie-overview {
+    display: none;
+  }
+  .movie {
+    width: 33.333%;
+    float: left;
+  }
+  .movie:first-child .movie-backdrop,
+  .movie:first-child .movie-overview {
+    display: block;
+  }
+
+  .movie:first-child .movie-poster {
+    display: none;
+  }
+
+  .movie:first-child {
+    width: 100%;
+  }
+
+
+}
+
+/* bonus breakpoint, switching back to backdrops and descriptions */
+
+@media (min-width:1364px) {
+  .movie-poster{
+    display: none;
+  }
+
+  .movie-backdrop,
+  .movie-overview {
+    display: block;
+  }
+  .movie,
+  .movie:first-child  {
+    width: 50%;
+    float: left;
+  }
+
+
+
 }
